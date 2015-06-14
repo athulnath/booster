@@ -1,4 +1,9 @@
 <?php
+/**
+ * Find a digit in a number and replace with a given digit
+ * 
+ */
+
 $arr = [45, 59,237, 599, 498, 91, 890];
 $input_digit = 9;
 $replace_digit = 0;
