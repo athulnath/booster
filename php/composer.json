@@ -1,0 +1,23 @@
+{
+    "name": "athulnath/booster",
+    "authors": [
+        {
+            "name": "athulnath",
+            "email": "athulnath.t@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "5.4.6"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"Booster\\":"src/"
+    	}
+    },
+    "autoload-dev": {
+    	"psr-4": {
+    		"Test\\":"tests/"
+    	}
+    }
+}

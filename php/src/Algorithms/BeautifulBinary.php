@@ -1,5 +1,9 @@
 <?php
-class Binary {
+namespace Booster\Algorithms;
+
+use Booster\Common\Reader;
+
+class BeautifulBinary {
 	public static function getMinimumStep($n, $binary) {
 		$counter = 0;
 		$i = 0;
@@ -14,15 +18,3 @@ class Binary {
 		return $counter;
 	}
 }
-
-class Read {
-	public static function getStdin() {
-		return fopen("php://stdin", "r");
-	}
-}
-
-
-$handle = Read::getStdin();
-fscanf($handle, "%d", $n);
-fscanf($handle, "%s", $data);
-echo Binary::getMinimumStep($n, $data);
