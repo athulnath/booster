@@ -1,0 +1,128 @@
+<?php 
+namespace Test\Algorithms;
+
+use PHPUnit\Framework\TestCase;
+use Booster\Algorithms\GermStones;
+
+class GermStonesTest extends TestCase {
+
+	public function testGermElements() {
+		$obj = new GermStones();
+
+		$inputArray = ["abcdde", "baccd", "eeabg"];
+		$this->assertEquals($obj->getGermElements($inputArray), 2);
+
+		$inputArray = ["abcdde"];
+		$this->assertEquals($obj->getGermElements($inputArray), 6);
+
+		$inputArray = ["a", "aaaz", "bab", "bbbbae3d"];
+		$this->assertEquals($obj->getGermElements($inputArray), 1);
+
+		$inputArray = ["aa", "aaaz", "bab", "bbbbae3d"];
+		$this->assertEquals($obj->getGermElements($inputArray), 1);
+
+		$data = "wlqdbbmrbbca
+		fndlpcyisdcosxjrglsyracbbqaebwdmbkdofeexoqphwfgacdlnxkmprxrljpdy
+		dzxxhqjophycwuccrwrhbekczqrqiifjbcqkxszhtqvabfncsalkvffcbaxsapnpmohk
+		tootcndrwusguhbdbxkluagaxeobzyeddacdwngrwmbchqplu
+		jihcqygidhsfoyvabxajuvlphluzomo
+		zcvocajjpaxauohhdfcblwwizdnpygqlwrblbppnqmooadxtedgkudru
+		tsoicexkzfinpcbnsdovrtkelctbeitbgldqqpfxuxtfpybzusdjpjzgisbybevhhfpkrqeddbsqchae
+		eznasnpflcumubjwdalxzwutdfrwpyhkncvbpsvbnylugixnpgvk
+		cabhhevseayd
+		khrsufraowtxgonxgdrffrpvdbdeeqagpurkkseywfaqypnjidjsrumgoviprjcbcxuicbzixvlbtdqnfb
+		pwkxxwbwtjaknqbfsxkowtozovcjguvynwnbvwewcgosuicbfnemhluxjvgmpddchjonjm
+		tpevrcojclbgydcikeaaqmvmyrbtiivlubdgbgvwsfqhihemnykkmsebvtxulxdbkhqrdogvtcenhviqrr
+		azngfwglcvbmfrhrawhpysdqjmuggivpguxqacmjnhxxzuftnjendthrdwwexvtbpkrttomssdcebzmaxxre
+		gazwzratddbac
+		pjakhbucnzdldhchel
+		bzcdesupznpmaebdomtgqxkfxomqmva
+		drbcqbaoaing
+		oallngsofuoqopfthnngehfosscymerssookvbjjgxeqccatdmnvwalwibauyhtswkjsppsmwdmiquqqd
+		fwjhsqtwoliyvbdsdbefdaesvknactlpz
+		lsqxzjkytgmdfiwbqlaswmxbhqibqqyfveczxcqcvjenctpcdsysdrkispsarxonifoggd
+		cgjhbyibpghbnqraaqimsefnkxvvnnnvrbotbneigymolqghyxaprmmxfcwmqxxakydoorjicvxijutcbmyrqqzxisdqqeqaaa
+		tseejabzccxmphwvecvqsorfdhpvkuuqxgeqtbvdajdubblmvfjmubpktvflu
+		ododeqifxgsxrhtbualcbjgjubimbizxuopccbobkqskvtovpujnwjsaxbnqcmiqrntaudkfwspjmmpcekwu
+		yhlhuoscxdyslxinfyyrwjaexefyqtzzotxydhxrjaojnqzaznjqqldydmsybeggadvuvphdygluedsljedk
+		qtmjsdceqdtdlpoyctszkifabagypkonttbxosbquoopru
+		kduacfioftizbryvrikrysxmojkiukqtyiocj
+		dhjaaxsagfabdffuvfwffiaelhwuxdvciqubmpfewuchvrbyukkjathabpiaqf
+		gioaqqhlzwgpaznqdbqnqwkodrlmdmivfqkoanscdhawmwk
+		wmraodcomumbhrwble
+		bkiqpcetolvpckpemxhymmfcdcsjbiixidcdindtakxajzhql
+		bbcajgcctdxdw
+		yrxoabvaosvalwggofhdnonsvqztnapicpypf
+		tlneqntaagjkcdlhvomdwiirbgsmhxdjvtduhbntnmqqbqqtulwgxnyzyiatasmydn
+		mkfbvhtdugdzcztgvedbebgdfnzzpxefcycvevvucibhccazvdoaxuzfertfbrn
+		dcymhktqxamjotsexnidodqdeqbpygzbhwvermncjcopcgayqrw
+		nzfcbhfstkvldbapdnpimqc
+		ofaavkxwjacogcrdfwcmopswvpmjaphsuzhglkyqdobeouagunexnbtwpyccggjiixmwacjtzcbcxgeqbbiftqimcqci
+		svavfhwzvcgemhibkmhhamvczdwtnvzcqddxmkugvpqy
+		trxbzxqazollbxmfketdzvloclw
+		jzbyxloucwcwdgcjsawafpyebrsfcxygpwczmtbkxejzfdtzhujjqvmizjskhuvdwparvjkazbhpandhsrjbbb
+		vnaccyqjdbybjatosxejkjncohtniwjjdjqktackfroiactzbfrtmewywphcdiwq
+		bpnvaxvcivtihhhefd
+		zccbjehjumbdyczsafzlluqgtxmbzvvitranqgiknxmoszhqorkskutftqqysh
+		rxxmozqhwuhbicfhpvczcsgknddrbfspbequqnhzfjmdacbaihdyrohyovwnotjiiropztgqfxis
+		bzapvmrhixzgzlfdnosohwmbmllmrutgqyddinejxihnmatqhcaczjklgtocnxfkllhstcxsravgebdiccd
+		hrcxznkceivmxbdrgbfwthnbpnkcfihrabosjzssfiadojyynshqdvhbvabvffmtwvmgecjdzonqgtnusspxccq
+		pcjxvcxyhqpbqngyhjgeprprgdooiiaipzrorffxaaihqidyshtowxojygtoenaifh
+		nnjbfbgcmuhftagjqpjgqbbcdbdiparirvhkmpylviaf
+		bdtyuydirsmgkfxjwngqkysjjdrutcgbyqsgefsccxdtmkbgatycoieztaktqpzkxysfbn
+		acizgadzqebandvgeldgzrfgpxxzttbktxwkvdyrcwoicanahosxiwthabojcatmhayvcevz
+		xdaiwbqoikhyccdufjjjjitjiwwwywchqfzunqjbadddejbcriznxdhaaxtzsjcaquhpl
+		omucudabkddunbcbubzhcnhbjgapbnebkwbqhgmyduxgonabopsecdcafqrdsayeoredfglcfblayusgeepp
+		ybxrrcwvdqba
+		ejyyvcrzcimznadxwrasbhagzlnjwtexkabnu
+		jzcykuxbmamradenpajyvjxfjvipodpqmyi
+		wyburlppmrnyixewitaqesvdftovwfvopxaiwxdatukjxbimecsqdtcxtilzfqqgomt
+		zpkpdebbvnirypwjlchhwpyhpadmblounzusawtiixamaydaqcrvtkbxhoxexbafrzkurgvae
+		qvrqbcdjnfdgdgvjnccabtgvlxa
+		lzwzwklnpahxwezchfvurznjylmjgobvmbelapgdyacxpbcmxbofaakihkbcdkwwb
+		ddlavbrdkklaypc
+		dekyvdtcmsixuuyujmhactampubvz
+		cqzcqgarcpoapulcljenodvtvlsfipmfzdvbiqvnxxbvduhub
+		phjozbkkmhlxqimbclzjtqhjixnngicclvtfasorpguwbheuceembwyifssmuvesjgicziypwuzmgyksutpqobxddgwcr
+		lzfedysysuibdzjyxfamicgdtfsgxglqubaqspwsocljjaekcafqvlgtnlkbx
+		kjeklqrbkcjbsjmocfrmnrmpyhyqzpqeolhzaxdhfhszyldktadpkreubveuavrmolcctupzeiibha
+		uidbqczzqfwspncrqjhpngaouinykucunkaprswfxzkaljkslrwqizqykstkxaacyzc
+		ywjwbbwamomnnwctecvodirukyibufghijcgiegktxapfoaatqbjywhqajrsvcwbyuhntrlkd
+		lpxdftislbfrtxbuoyfyeelxcxforisknoxwyotrxkbcaxmaytbohrodsckhssomuhdhtsqdea
+		aippypcqtvscomvdafcb
+		wcbrwatddd
+		hpdcdcqcjbyggbubomogsesiauxopdcmmcvqutimxcbraymsnchezdzmuctorcuswynpdh
+		qcafeedflhyawnahuszb
+		kdimimomokymjhxjvudagjalxytjzcylcbxoybqywhlvjkxkgyfpqrfwwgqbgdcnhmcxxkhmckhvcekpcwaggktrspryaucfiy
+		tbaqqdmhdknqxwyyvatrycayfjkjb
+		ichmdasijhpbpbuo
+		ikgcjftofkfmgehpxpmbvwvurejebajgdtqwoerurztiqdusibgtallagziophyecgburqztocdphhjkzfg
+		opqdatbovwtigueygizeqaudfpisgsbddlzuxkbvpizadirgcghja
+		oeuwvlgdivdmtedvouiwhromvcvawbfreqkypvngbztnjljwubshudqbxqzxcwvvdymupuuydwaabsufzccjmatnp
+		ibksgubbbtyeddewdurzlpczocvgwlomarjahlktxyfwunft
+		scjmatbgasqrkskdcoc
+		pbptqjdigqxrgfeeifudazmjagpqfpkigehycevigskeqfeophcadwahpasejooytjnnzgrebmkwyjhomhokbghsurbnbcix
+		nvqtgvbdjvnkhchxbtsqcygnnatyaxtkyolmzvrxjrmcfworpeazmifcmjbom
+		zeactmjqxcftxxpxbzsatetbqxabwsbrsdfzgk
+		jzokqdgtmiknlupiaitmdxyzjgteurrpwqmzjnmpyvhrlkvrvohywsjzbobdunkfhpszyfzhvbmtahwyeyssmxilwliadcbcohf
+		qbmdzqlvhwvpwuepcsalqlstsysgqbzrjwqztadfxhtcrudmtdgyjkhwwiwlxabbevplbprkcy
+		obwpxlkplacnwnsbqbifgbjtpdjdvsymtmgapjyxmzgrlnhjlafqczfsgdpadipycrziahuhh
+		pcfoigiluxobfgdlhemqcncaawlhvcauucm
+		suhjsgbclvdvzpelducrhpzqkpbhmowkhhxzzealabinwtzqizeyoyyuqdugxtzxgdbf
+		shyezfcfdqayb
+		uvwjsmnyskxzcsuwwwiaheemzedvwkbfmedsclcflqginqcgawykbaahsgcgkqfhwyqtdacdr
+		fbselosapztxrocwmvdzgbhpebwebpomerzccgvr
+		lxnoynimecbmdovnyauapznjtbyapkjwdexqimvdoqfjzgdlswzumrvyveimtbzpze
+		fcydvajeeehvhwrbckiixpnnxwpxehmclojcdpyyoukjxmxykahcpnbenewajqoxpahwhmyyqwovpusk
+		baastodbtupzsqgefufkgnzsozyfgogynchiwxulvqnadkltpwkrqasmuwmhefdzmtobjexyhgbqzhdlxygmlcubczjgwayjv
+		ubnixmgdixzyvsdscejnnqrngqcynvzkoatgldnwtbqyqzearbpyfls
+		gmphijuoyzenednrblzjdftchkygcmujasetaqczmobuwlnbdyrpcvvxvqoc
+		kuujodranurqhexxrgcnjtgdgakqxkqvausdgbqx
+		dukpfcaibe
+		rguziolcjrbaicmodpzxhbdmdtpcmfrtgauhnbcggnazeqds
+		jrkzfbzunysltcdlzpbhawvodtataapvoietwq";
+
+		$inputArray = explode("\n", $data);
+		$this->assertEquals($obj->getGermElements($inputArray), 4);
+	}
+}
